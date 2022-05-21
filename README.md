@@ -1,7 +1,7 @@
 # NLP_emotions_classifier
 Sentiment analysis on emotions dataset
 
-The aim of this problem was the correct classification of emotions of this dataset: [https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp] .
+The aim of this problem was the correct classification of emotions of this dataset: https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp.
 
 The train, validation and test datasets with both sentences and emotion labels were provided.
 
