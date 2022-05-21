@@ -33,6 +33,7 @@ For this senmtiment analysis problem, 2 types of graphs were plotted.
 The first one depicts a wordcloud graph, imported using the library called `wordcloud`.
 
 ![train](https://user-images.githubusercontent.com/62444785/169670215-b074d597-5abf-4944-bce9-054e5decdf65.png)
+<p align="center"> <img src="https://user-images.githubusercontent.com/62444785/169670215-b074d597-5abf-4944-bce9-054e5decdf65.png" width="850" height="400"/>   </p>
 
 ![validation](https://user-images.githubusercontent.com/62444785/169670221-2b401cc2-7f53-4353-9eeb-814a13dc923c.png)
 
@@ -44,8 +45,7 @@ Below, I put the code used to plot the 3 graphs:
 
 bert=TFBertModel.from_pretrained('bert-base-cased') 
 ```python
- def plot_cloud(wordcloud,intt,dataset):
-    #plt.figure(figsize=(10, 10))
+def plot_cloud(wordcloud,intt,dataset):
     axes[intt].set_title('Word Cloud '+dataset+' dataset', size = 19,y=1.04)
     axes[intt].imshow(wordcloud)             
     axes[intt].axis("off"); # No axis details
