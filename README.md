@@ -13,3 +13,14 @@ In this repository there are the following notebooks:
 - [Pretrained_BERT.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_BERT.ipynb) in which I applied BERT.
 - [Pretrained_Bert_stopword_lemmatizer.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_Bert_stopword_lemmatizer.ipynb)  in which I applied stopword and lemmatizer, followed by BERT. It was the model with the highest accuracy.
 - [Sentiment_prediction.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) is a class prediction notebook based on a single sentence that the user gives as input.
+
+The embeddings where downloaded from here https://nlp.stanford.edu/projects/glove/ and they were transformed into a dictionary and saved so that it required less time to load them in the future. The same thing has been done with other embeddings.
+The datasets were loaded too and words were tokenized and padded to a fixed maximum length.
+Also, labels were encoded based on the train data and GloVe weights were added based on the words present in the train dataset.
+
+For BERT models, the words were tokenized with the LabelEncoder()  from transformers import AutoTokenizer, TFBertModel  AutoTokenizer.from_pretrained('bert-base-cased')
+bert=TFBertModel.from_pretrained('bert-base-cased')   Tokenizer()
+```python
+LabelEncoder() 
+Tokenizer()
+```
