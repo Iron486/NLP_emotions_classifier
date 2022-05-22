@@ -141,16 +141,14 @@ Epoch 2/3
     
 Epoch 3/3
 1334/1334 [==============================] - 933s 700ms/step - loss: 0.1113 - accuracy: 0.9482 - val_loss: 0.1550 - val_accuracy: 0.9375    
-    
- {'name': 'Adam',
- 'clipnorm': 1.0,
- 'learning_rate': 5e-05,
- 'decay': 0.01,
- 'beta_1': 0.9,
- 'beta_2': 0.999,
- 'epsilon': 1e-08,
- 'amsgrad': False}   
-    
-  Thus, the model reached a **93.75% validation accuracy** and 94.84% on train dataset  
+     
+&nbsp; 
+   
+Thus, the model reached a **93.75 % validation accuracy** and 94.84 % on train dataset.
+
+** On test dataset, the model reached an accuracy of 92.95 % **, with a loss of loss: 0.1699.
+
+In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) I applied the train model, in a more compact form, to new sentences defined by the user.
+   
     
     
