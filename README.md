@@ -100,6 +100,8 @@ Below,  I reported the details about this model, the optimizer and the trained e
     
 &nbsp;    
     **<p align="center"> BERT with stopword and lemmatizer - Model </p>** 
+   
+   &nbsp;
     
 | Layer (type)                   |   Output Shape    |  Param #  |    Connected to               |
 |--------------------------------|---------------------|-------------|-----------------------------|    
