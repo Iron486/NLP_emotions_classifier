@@ -144,11 +144,9 @@ Epoch 3/3
      
 &nbsp; 
    
-Thus, the model reached a **93.75 % validation accuracy** and 94.84 % on train dataset.
+Thus, the model reached a **93.75 % validation accuracy** and 94.84 % on train dataset. **On test dataset, the model reached an accuracy of 92.95 %**, with a loss of loss: 0.1699.
 
-**On test dataset, the model reached an accuracy of 92.95 %**, with a loss of loss: 0.1699.
-
-In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) I applied the train model, in a more compact form, to new sentences defined by the user.
+In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) I applied the trained model, in a more compact form, to new sentences defined by the user. Running the script, it automatically applies the preprocessing steps and the prediction on the input sentence
    
     
     
