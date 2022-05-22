@@ -9,7 +9,7 @@ The train, validation and test datasets with both sentences and emotion labels (
 
 In this repository there are the following notebooks:
 
-- [Preprocessing_EDA_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Preprocessing_EDA_LSTM.ipynb) is the notebook that I used to preprocess the data, apply exploratory data analysis on datasets and using an LSTM layer. A 100 GloVe encoding dimension vector developed by [Stanford University](https://nlp.stanford.edu/projects/glove/) was used to embed the words in the datasets.
+- [Preprocessing_EDA_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Preprocessing_EDA_LSTM.ipynb) is the notebook that I used to preprocess the data, apply exploratory data analysis on datasets and using an LSTM layer. A 100 GloVe encoding dimension vector developed by [Stanford University](https://nlp.stanford.edu/projects/glove/) was used to encode the words in the datasets.
 - [EDA_LSTM_50_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_50_encodings.ipynb) and [EDA_LSTM_200_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_200_encodings.ipynb) that are like the previous one, but using 50 and 200 dimension encoding vectors.
 - [LSTM_Conv1d.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_Conv1d.ipynb) where I applied an LSTM layer with 100 dimesion encoding vectors.
 - [LSTM_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_LSTM.ipynb) that is a test with two LSTM layers.
@@ -72,7 +72,7 @@ The second type of plot that I coded was a barplot representing the number of se
     
 ![immagine_2022-05-22_003327046](https://user-images.githubusercontent.com/62444785/169671041-6710ae2a-f03b-4120-bd69-be736ca561ec.png)
 
-So, the dataset is unbalanced with 'sadness' and 'joy' labels that dominate over the others.
+So, the dataset is unbalanced with 'sadness' and 'joy' labels dominating over the others.
    
 ### TRAINING THE MODEL    
     
