@@ -4,11 +4,11 @@ The aim of this problem was the correct emotions classification of this dataset:
 
 
 
-The train, validation and test datasets with both sentences and emotion labels (sadness,anger,love,surprise,fear,joy) were provided.
+The train, validation and test datasets with both sentences and emotion labels (sadness,anger,love,surprise,fear,joy) were provided. 
 
 In this repository there are the following notebooks:
 
-- [Preprocessing_EDA_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Preprocessing_EDA_LSTM.ipynb) is the notebook that I used to preprocess the data, apply exploratory data analysis on datasets and using an LSTM layer. A 100 GloVe encoding dimension vector developed by [Stanford University](https://nlp.stanford.edu/projects/glove/) was used to encode the words in the datasets.
+- [Preprocessing_EDA_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Preprocessing_EDA_LSTM.ipynb) is the notebook that I used to preprocess the data, apply exploratory data analysis on the datasets and that I trained with an LSTM layer. A 100 GloVe encoding dimension vector developed by [Stanford University](https://nlp.stanford.edu/projects/glove/) was used to encode the words in the datasets.
 - [EDA_LSTM_50_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_50_encodings.ipynb) and [EDA_LSTM_200_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_200_encodings.ipynb) that are like the previous one, but using 50 and 200 dimension encoding vectors.
 - [LSTM_Conv1d.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_Conv1d.ipynb) where I applied an LSTM layer with 100 dimension encoding vectors.
 - [LSTM_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_LSTM.ipynb) that is a test with two LSTM layers.
@@ -18,6 +18,8 @@ In this repository there are the following notebooks:
 - [Sentiment_prediction.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) is a class prediction notebook based on a single sentence that the user gives as input.
 
 In all the notebooks used for training, I used on top of the layer a fully connected neural network with 6 neurons as output layer and a variable number of neurons, dropout and hidden layers.
+
+I used the Google Colab GPU to train all the models except for the BERT with stopwords and lemmatizer, in which I used my [local GPU](https://github.com/Iron486/Iron486/blob/main/local_GPU.ipynb).
 
 ### PREPROCESSING
 
