@@ -9,22 +9,24 @@ The train, validation and test datasets with both sentences and emotion labels (
 
 In this repository there are the following notebooks:
 
-- [Preprocessing_EDA_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Preprocessing_EDA_LSTM.ipynb) is the notebook that I used to preprocess the data, apply exploratory data analysis on datasets and LSTM. A 100 GloVe encoding dimension vector developed by [Stanford University](https://nlp.stanford.edu/projects/glove/) was used to embed each word in the dataset.
+- [Preprocessing_EDA_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Preprocessing_EDA_LSTM.ipynb) is the notebook that I used to preprocess the data, apply exploratory data analysis on datasets and using an LSTM layer. A 100 GloVe encoding dimension vector developed by [Stanford University](https://nlp.stanford.edu/projects/glove/) was used to embed the words in the datasets.
 - [EDA_LSTM_50_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_50_encodings.ipynb) and [EDA_LSTM_200_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_200_encodings.ipynb) that are like the previous one, but using 50 and 200 dimension encoding vectors.
 - [LSTM_Conv1d.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_Conv1d.ipynb) where I applied an LSTM layer with 100 dimesion encoding vectors.
 - [LSTM_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_LSTM.ipynb) that is a test with two LSTM layers.
-- 
+- [Bidirectional_LSTM_Conv1d.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_LSTM.ipynb) where I used a Bidirectional LSTM with a CONV1d layer stacked above it.
 - [Pretrained_BERT.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_BERT.ipynb) in which I applied BERT.
 - [Pretrained_Bert_stopword_lemmatizer.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_Bert_stopword_lemmatizer.ipynb)  in which I applied stopword and lemmatization, followed by BERT. It was the model with the highest accuracy.
 - [Sentiment_prediction.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) is a class prediction notebook based on a single sentence that the user gives as input.
 
+In all the notebooks used for training, I used on top of the layer a fully connected neural network with 6 neurons as output layer and a variable number of neurons, dropout and hidden layers.
+
 ### PREPROCESSING
 
-The embeddings where downloaded from here https://nlp.stanford.edu/projects/glove/ and they were transformed into a dictionary and saved so that it required less time to load them. The same thing has been done with embeddings of 50 and 200 length-vectors.
-The datasets were loaded too and words were tokenized and padded to a fixed maximum length.
-Also, labels were encoded based on the train data with the following encoder from keras `LabelEncoder()` and GloVe weights were added based on the words present in the train dataset.
+The embeddings where downloaded from here https://nlp.stanford.edu/projects/glove/ , they were transformed into a dictionary and saved, so that it would have required less time to load them. The same thing has been done with embeddings of 50 and 200 length vectors.
+The datasets were loaded too and the words were tokenized and padded to a fixed maximum length.
+Also, labels were encoded based on the train data with the following encoder from keras `LabelEncoder()`, and GloVe weights were added based on the words present in the train dataset.
 
-For BERT models, the words were tokenized with the `AutoTokenizer` class from `transformers` library, using the `from_pretrained()` method and using `bert-base-cased` as argument, since the BERT has . 
+For BERT models, the words were tokenized with the `AutoTokenizer` class from `transformers` library, using the `from_pretrained()` method and using `bert-base-cased` as argument, since it yields 2 feature encoding outputs. 
 Instead, for the LSTM and the other tested variations `Tokenizer()` method from `keras.preprocessing.text` was used.
 
 
@@ -66,7 +68,7 @@ plot_cloud(wordcloud,1,'validation')
 wordcloud = WordCloud(width = 600, height = 600,background_color = 'White',max_words=1000,repeat=False,min_font_size=5,collocations=False).generate(b_test)
 plot_cloud(wordcloud,2,'test')
 ```
-The second type of plot that I coded is a barplot representing the number of sentences for each label.
+The second type of plot that I coded was a barplot representing the number of sentences for each label.
     
 ![immagine_2022-05-22_003327046](https://user-images.githubusercontent.com/62444785/169671041-6710ae2a-f03b-4120-bd69-be736ca561ec.png)
 
@@ -74,7 +76,7 @@ So, the dataset is unbalanced with 'sadness' and 'joy' labels that dominate over
    
 ### TRAINING THE MODEL    
     
-In the table below I summed up the model used, along with the Tokenizer, the number of total and trainable parameters and the associated accuracy on validation dataset.
+In the table below I summed up the model used, along with the Tokenizer, and the associated accuracy on validation dataset.
 
 &nbsp;    
     
@@ -87,15 +89,14 @@ In the table below I summed up the model used, along with the Tokenizer, the num
 |  LSTM-LSTM 100 encodings| Tokenizer() |  1,498,046  |  79,546  | 84.0  |
 |  Bert                  | AutoTokenizer.from_pretrained('bert-base-cased')| 108,420,460  | 108,420,460|  85.55 |
 |  Bert stopword-lemmatizer  | AutoTokenizer.from_pretrained('bert-base-cased')| 108,420,460 | 108,420,460 | 93.75 |    
-| dropout_75 (Dropout)       | (None, 138) |   0   |  dense_3[0][0]   |           |       
+|  BidirectionalLSTM-Conv1d     | Tokenizer() |   1,500,257   |  81,757   |     81.60      |       
     
 The largest accuracy was obtained on the BERT with stopword and lemmatization. 
 
 The model was a pretrained model written by [Hugging Face](https://huggingface.co/bert-base-cased) , and I fetched it with the Tensorflow method `TFBertModel.from_pretrained('bert-base-cased')`.
-The input of the BERT were the 2 features ("input_ids" and "attention_mask") obtained with the already mentioned tokenizer ( `AutoTokenizer.from_pretrained('bert-base-cased') `)
-The input of the tokenizer was made by words that were lemmatized and on which stopwords were applied. The lemmatizer and the stopwrods were downloaded from the NLTK library.
+The input of the BERT were the 2 features ("input_ids" and "attention_mask") obtained with the already mentioned tokenizer ( `AutoTokenizer.from_pretrained('bert-base-cased') `). The input of the tokenizer was made by words that were lemmatized and on which stopwords were applied. The lemmatizer and the stopwords were downloaded from the NLTK library.
 
-Below,  I reported the details about this model, the optimizer and the trained epochs.
+Below, I reported the details about this model, the optimizer and the trained epochs.
     
     
 &nbsp;    
@@ -146,7 +147,7 @@ Epoch 3/3
    
 Thus, the model reached a **93.75 % validation accuracy** and 94.84 % on train dataset. **On test dataset, the model reached an accuracy of 92.95 %**, with a loss of loss: 0.1699.
 
-In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) I applied the trained model, in a more compact form, to new sentences defined by the user. Running the script, it automatically applies the preprocessing steps and the prediction on the input sentence
+In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) I applied the trained model in a more compact form to new sentences defined by the user. Running the script, it automatically applies the preprocessing steps and the evaluation, yielding the class prediction of the sentence as output. 
    
     
     
