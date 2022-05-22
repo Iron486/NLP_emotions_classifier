@@ -1,7 +1,7 @@
 # NLP_emotions_classifier
 Sentiment analysis on emotions dataset
 
-The aim of this problem was the correct classification of emotions of this dataset: https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp.
+The aim of this problem was the correct emotions classification of this dataset: https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp.
 
 
 
@@ -11,9 +11,11 @@ In this repository there are the following notebooks:
 
 - [Preprocessing_EDA_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Preprocessing_EDA_LSTM.ipynb) is the notebook that I used to preprocess the data, apply exploratory data analysis on datasets and LSTM. A 100 GloVe encoding dimension vector developed by [Stanford University](https://nlp.stanford.edu/projects/glove/) was used to embed each word in the dataset.
 - [EDA_LSTM_50_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_50_encodings.ipynb) and [EDA_LSTM_200_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_200_encodings.ipynb) that are like the previous one, but using 50 and 200 dimension encoding vectors.
-- [LSTM_Conv1d.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_Conv1d.ipynb) where I applied an LSTM layer with a 1d convolutional layer.
+- [LSTM_Conv1d.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_Conv1d.ipynb) where I applied an LSTM layer with 100 dimesion encoding vectors.
+- [LSTM_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_LSTM.ipynb) that is a test with two LSTM layers.
+- 
 - [Pretrained_BERT.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_BERT.ipynb) in which I applied BERT.
-- [Pretrained_Bert_stopword_lemmatizer.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_Bert_stopword_lemmatizer.ipynb)  in which I applied stopword and lemmatizer, followed by BERT. It was the model with the highest accuracy.
+- [Pretrained_Bert_stopword_lemmatizer.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_Bert_stopword_lemmatizer.ipynb)  in which I applied stopword and lemmatization, followed by BERT. It was the model with the highest accuracy.
 - [Sentiment_prediction.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) is a class prediction notebook based on a single sentence that the user gives as input.
 
 ### PREPROCESSING
@@ -32,14 +34,21 @@ For this senmtiment analysis problem, 2 types of graphs were plotted.
 
 The first one depicts a wordcloud graph, imported using the library called `wordcloud`.
 
+&nbsp; 
 
-<img src="https://user-images.githubusercontent.com/62444785/169670215-b074d597-5abf-4944-bce9-054e5decdf65.png" width="400" height="400"/> <img src="https://user-images.githubusercontent.com/62444785/169670221-2b401cc2-7f53-4353-9eeb-814a13dc923c.png" width="400" height="400"/> <img src="https://user-images.githubusercontent.com/62444785/169670207-6e737fe6-05c8-4919-be15-8f96f75662d9.png" width="400" height="400"/>  
 
+
+<img src="https://user-images.githubusercontent.com/62444785/169670215-b074d597-5abf-4944-bce9-054e5decdf65.png" width="503" height="525"/> <img src="https://user-images.githubusercontent.com/62444785/169670221-2b401cc2-7f53-4353-9eeb-814a13dc923c.png" width="503" height="525"/> 
+   
+<p align="center"> <img src="https://user-images.githubusercontent.com/62444785/169670207-6e737fe6-05c8-4919-be15-8f96f75662d9.png" width="520" height=525"/>  </p> 
+
+&nbsp;
+    
 It's clear that the words 'feel' and 'feeling' are the most common words for all the three datasets. This is due to the fact that these are the main verbs used to describe all the types of feelings present in the 6 classes.
 
 Below, I put the code used to plot the 3 graphs:
 
-bert=TFBertModel.from_pretrained('bert-base-cased') 
+
 ```python
 def plot_cloud(wordcloud,intt,dataset):
     axes[intt].set_title('Word Cloud '+dataset+' dataset', size = 19,y=1.04)
@@ -57,3 +66,91 @@ plot_cloud(wordcloud,1,'validation')
 wordcloud = WordCloud(width = 600, height = 600,background_color = 'White',max_words=1000,repeat=False,min_font_size=5,collocations=False).generate(b_test)
 plot_cloud(wordcloud,2,'test')
 ```
+The second type of plot that I coded is a barplot representing the number of sentences for each label.
+    
+![immagine_2022-05-22_003327046](https://user-images.githubusercontent.com/62444785/169671041-6710ae2a-f03b-4120-bd69-be736ca561ec.png)
+
+So, the dataset is unbalanced with 'sadness' and 'joy' labels that dominate over the others.
+   
+### TRAINING THE MODEL    
+    
+In the table below I summed up the model used, along with the Tokenizer, the number of total and trainable parameters and the associated accuracy on validation dataset.
+
+&nbsp;    
+    
+|             Model              | Tokenizer   |  # total params | # trainable params  |   Validation Accuracy    |
+|--------------|--------------|-----------|------|-------|    
+|  LSTM 100 encodings | Tokenizer()  | 1,478,086 | 59,586 | 84.55 |        
+|  LSTM 200 encodings  | Tokenizer() | 3,041,058 |  204,058  | 83.8 |       
+|  LSTM 50 encodings  | Tokenizer() | 753,836 |  44,586  |  80.9   |       
+|  LSTM conv1D 100 encodings| Tokenizer()| 1,473,970  |   55,470   |  83.9  |
+|  LSTM-LSTM 100 encodings| Tokenizer() |  1,498,046  |  79,546  | 84.0  |
+|  Bert                  | AutoTokenizer.from_pretrained('bert-base-cased')| 108,420,460  | 108,420,460|  85.55 |
+|  Bert stopword-lemmatizer  | AutoTokenizer.from_pretrained('bert-base-cased')| 108,420,460 | 108,420,460 | 93.75 |    
+| dropout_75 (Dropout)       | (None, 138) |   0   |  dense_3[0][0]   |           |       
+    
+The largest accuracy was obtained on the BERT with stopword and lemmatization. 
+
+The model was a pretrained model written by [Hugging Face](https://huggingface.co/bert-base-cased) , and I fetched it with the Tensorflow method `TFBertModel.from_pretrained('bert-base-cased')`.
+The input of the BERT were the 2 features ("input_ids" and "attention_mask") obtained with the already mentioned tokenizer ( `AutoTokenizer.from_pretrained('bert-base-cased') `)
+The input of the tokenizer was made by words that were lemmatized and on which stopwords were applied. The lemmatizer and the stopwrods were downloaded from the NLTK library.
+
+Below,  I reported the details about this model, the optimizer and the trained epochs.
+    
+    
+&nbsp;    
+    **<p align="center"> BERT with stopword and lemmatizer - Model </p>** 
+    
+| Layer (type)                   |   Output Shape    |  Param #  |    Connected to               |
+|--------------------------------|---------------------|-------------|-----------------------------|    
+| input_ids (InputLayer)         | [(None, 43)]      |     0     |                               |        
+| attention_mask (InputLayer)    | [(None, 43)]      |     0     |                               |       
+| tf_bert_model_1 (TFBertModel)  | TFBaseModelOutput | 108310272 |  input_ids[0][0]              |    
+|                                |                   |           |  attention_mask[0][0]         |    
+| global_max_pooling1d_1 (GlobalM| (None, 768)       |     0     |  tf_bert_model_1[1][0]        |    
+| dense_3 (Dense)                | (None, 138)       |  106122   |  global_max_pooling1d_1[0][0] |    
+| dropout_75 (Dropout)           | (None, 138)       |     0     |  dense_3[0][0]                |    
+| dense_4 (Dense)                | (None, 28)        |   3892    |  dropout_75[0][0]             |    
+| dense_5 (Dense)                | (None, 6)         |    174    |  dense_4[0][0]                |
+       
+ &nbsp;     
+Total params: 108,420,460  &ensp; &ensp; &ensp; &ensp; Trainable params: 108,420,460   &ensp; &ensp;  &ensp; &ensp;     Non-trainable params: 0  
+    
+&nbsp;  
+**<p align="center"> BERT with stopword and lemmatizer - Optimer </p>**     
+    
+{'name': 'Adam',
+ 'clipnorm': 1.0,
+ 'learning_rate': 5e-05,
+ 'decay': 0.01,
+ 'beta_1': 0.9,
+ 'beta_2': 0.999,
+ 'epsilon': 1e-08,
+ 'amsgrad': False}       
+    
+    
+&nbsp;    
+
+**<p align="center"> BERT with stopword and lemmatizer - Training and validation accuracy  </p>**  
+    
+Epoch 1/3    
+1334/1334 [==============================] - 959s 698ms/step - loss: 0.3806 - accuracy: 0.8639 - val_loss: 0.1853 - val_accuracy: 0.9315
+    
+Epoch 2/3
+1334/1334 [==============================] - 924s 693ms/step - loss: 0.1362 - accuracy: 0.9416 - val_loss: 0.1656 - val_accuracy: 0.9305
+    
+Epoch 3/3
+1334/1334 [==============================] - 933s 700ms/step - loss: 0.1113 - accuracy: 0.9482 - val_loss: 0.1550 - val_accuracy: 0.9375    
+    
+ {'name': 'Adam',
+ 'clipnorm': 1.0,
+ 'learning_rate': 5e-05,
+ 'decay': 0.01,
+ 'beta_1': 0.9,
+ 'beta_2': 0.999,
+ 'epsilon': 1e-08,
+ 'amsgrad': False}   
+    
+  Thus, the model reached a **93.75% validation accuracy** and 94.84% on train dataset  
+    
+    
