@@ -112,11 +112,9 @@ Below,  I reported the details about this model, the optimizer and the trained e
 | dropout_75 (Dropout)           | (None, 138)       |     0     |  dense_3[0][0]                |    
 | dense_4 (Dense)                | (None, 28)        |   3892    |  dropout_75[0][0]             |    
 | dense_5 (Dense)                | (None, 6)         |    174    |  dense_4[0][0]                |
-       
- &nbsp;     
-Total params: 108,420,460  &ensp; &ensp; &ensp; &ensp; Trainable params: 108,420,460   &ensp; &ensp;  &ensp; &ensp;     Non-trainable params: 0  
-    
-&nbsp;  
+          
+&nbsp; 
+   
 **<p align="center"> BERT with stopword and lemmatizer - Optimer </p>**     
     
 {'name': 'Adam',
@@ -146,7 +144,7 @@ Epoch 3/3
    
 Thus, the model reached a **93.75 % validation accuracy** and 94.84 % on train dataset.
 
-** On test dataset, the model reached an accuracy of 92.95 % **, with a loss of loss: 0.1699.
+**On test dataset, the model reached an accuracy of 92.95 %**, with a loss of loss: 0.1699.
 
 In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) I applied the train model, in a more compact form, to new sentences defined by the user.
    
