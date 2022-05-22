@@ -22,7 +22,7 @@ In all the notebooks used for training, I used on top of the layer a fully conne
 
 ### PREPROCESSING
 
-The embeddings where downloaded from here https://nlp.stanford.edu/projects/glove/ , they were transformed into a dictionary and saved, so that it would have required less time to load them. The same thing has been done with embeddings of 50 and 200 length vectors.
+The embeddings where downloaded from here https://nlp.stanford.edu/projects/glove/ and then they were transformed into a dictionary and saved, so that it would have required less time to load them. The same thing has been done with embeddings of 50 and 200 length vectors.
 The datasets were loaded too and the words were tokenized and padded to a fixed maximum length.
 Also, labels were encoded based on the train data with the following encoder from keras `LabelEncoder()`, and GloVe weights were added based on the words present in the train dataset.
 
