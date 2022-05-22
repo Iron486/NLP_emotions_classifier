@@ -118,8 +118,10 @@ Below, I reported the details about this model, the optimizer and the trained ep
           
 &nbsp; 
    
-**<p align="center"> BERT with stopword and lemmatizer - Optimer </p>**     
-    
+**<p align="center"> BERT with stopword and lemmatizer - Optimer </p>** 
+   
+&nbsp;       
+   
 {'name': 'Adam',
  'clipnorm': 1.0,
  'learning_rate': 5e-05,
@@ -132,7 +134,9 @@ Below, I reported the details about this model, the optimizer and the trained ep
     
 &nbsp;    
 
-**<p align="center"> BERT with stopword and lemmatizer - Training and validation accuracy  </p>**  
+**<p align="center"> BERT with stopword and lemmatizer - Training and validation accuracy  </p>** 
+   
+&nbsp; 
     
 Epoch 1/3    
 1334/1334 [==============================] - 959s 698ms/step - loss: 0.3806 - accuracy: 0.8639 - val_loss: 0.1853 - val_accuracy: 0.9315
