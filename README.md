@@ -91,7 +91,7 @@ In the table below I summed up the model used, the tokenizer, the number of tota
 |  LSTM conv1D 100 encodings| Tokenizer()| 1,473,970  |   55,470   |  83.90  |
 |  LSTM-LSTM 100 encodings| Tokenizer() |  1,498,046  |  79,546  | 84.00  |
 |  Bert                  | AutoTokenizer.from_pretrained('bert-base-cased')| 108,420,460  | 108,420,460|  85.55 |
-|  Bert stopword-lemmatizer  | AutoTokenizer.from_pretrained('bert-base-cased')| 108,420,460 | 108,420,460 | 93.75 |    
+|  **Bert stopword-lemmatizer**  | **AutoTokenizer.from_pretrained('bert-base-cased')** | **108,420,460** | **108,420,460** | **93.75** |    
 |  BidirectionalLSTM-Conv1d     | Tokenizer() |   1,500,257   |  81,757   |     81.60      |       
     
 The largest accuracy was obtained on the BERT with stopword and lemmatization. 
