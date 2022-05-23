@@ -79,7 +79,7 @@ So, the dataset is unbalanced with 'sadness' and 'joy' labels dominating over th
    
 ### TRAINING THE MODEL    
     
-In the table below I summed up the model used, along with the Tokenizer, and the associated accuracy on validation dataset.
+In the table below I summed up the model used, the tokenizer, the number of total and trainable parameters and the associated accuracy on validation dataset.
 
 &nbsp;    
     
