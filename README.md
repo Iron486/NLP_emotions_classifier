@@ -29,9 +29,9 @@ Also, labels were encoded based on the train data with the following encoder fro
 
 For BERT models, the words were tokenized with the `AutoTokenizer` class from `transformers` library, using the `from_pretrained()` method and using `bert-base-cased` as argument. This is because the input of the model expects 2 features ("input_ids" and "attention_mask") that can be obtained with the mentioned tokenizer. 
 
-The input of the tokenizer was made by words that were lemmatized (with `WordNetLemmatizer()` class) and on which stopwords were applied. The lemmatizer and the stopwords were downloaded from the NLTK library
+The input of the tokenizer was made by words that were lemmatized (with `WordNetLemmatizer()` class) and on which stopwords were applied. The lemmatizer and the stopwords were downloaded from the NLTK library.
 
-Instead, for the LSTM and the other tested variations `Tokenizer()` method from `keras.preprocessing.text` was used.
+Instead, for the LSTM and the other tested variations `Tokenizer()` class from `keras.preprocessing.text` was used.
 
 ### EXPLORATORY DATA ANALYSIS
 
@@ -97,10 +97,9 @@ In the table below I summed up the model used, along with the Tokenizer, and the
 The largest accuracy was obtained on the BERT with stopword and lemmatization. 
 The model was a pretrained model written by [Hugging Face](https://huggingface.co/bert-base-cased) , and I fetched it with the Tensorflow method `TFBertModel.from_pretrained('bert-base-cased')`.
 
-The input of the BERT were the 2 features obtained with the already mentioned tokenizer ( `AutoTokenizer.from_pretrained('bert-base-cased') `). 
+The input of the BERT were the 2 features obtained with the already mentioned tokenizer ( `AutoTokenizer.from_pretrained('bert-base-cased')` ). 
    
 Below, I reported the details about this model, the optimizer and the trained epochs.
-    
     
 &nbsp;    
     **<p align="center"> BERT with stopword and lemmatizer - Model </p>** 
