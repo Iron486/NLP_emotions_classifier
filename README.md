@@ -158,8 +158,8 @@ In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/
 Here, there is an example of a defined input sentence and the prediction given by the model :
 ```python
 In [2] : y=input()
-     I am astonished by what you've accomplished   
-Out [3] : 'surprise'
+     I am astonished by what you've accomplished     #input text
+Out [3] : 'surprise'     #class prediction
 ```   
    
 
