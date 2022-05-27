@@ -25,7 +25,7 @@ I used the Google Colab GPU to train all the models except for the BERT with sto
 ### PREPROCESSING
 
 The embeddings where downloaded from here https://nlp.stanford.edu/projects/glove/ and then they were transformed into a dictionary and saved, so that it would have required less time to load them. The same thing has been done with embeddings of 50 and 200 length vectors.
-Unfortunately, I could not put GloVe wembeddings in the data folder since they occupy more than 100 MB of memory, but it's possible to download them from the website.
+Unfortunately, I could not put GloVe wembeddings in the `data` folder since they occupy more than 100 MB of memory, but it's possible to download them from the website.
 
 The datasets were loaded too and the words were tokenized and padded to a fixed maximum length.
 Also, labels were encoded based on the train data with the following encoder from keras `LabelEncoder()`, and GloVe weights were added based on the words present in the train dataset.
