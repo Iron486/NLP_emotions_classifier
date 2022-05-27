@@ -19,11 +19,14 @@ In this repository there are the following notebooks:
 
 In all the notebooks used for training, I used on top of the layers a fully connected neural network with 6 neurons as output layer and a variable number of neurons, dropout and hidden layers.
 
-I used the Google Colab GPU to train all the models except for the BERT with stopwords and lemmatizer, in which I used my [local GPU](https://github.com/Iron486/Iron486/blob/main/local_GPU.ipynb).
+I used the Google Colab GPU to train all the models except for the BERT with stopwords and lemmatizer and LSTM_Conv1d.ipynb, in which I used my [local GPU](https://github.com/Iron486/Iron486/blob/main/local_GPU.ipynb).
+
 
 ### PREPROCESSING
 
 The embeddings where downloaded from here https://nlp.stanford.edu/projects/glove/ and then they were transformed into a dictionary and saved, so that it would have required less time to load them. The same thing has been done with embeddings of 50 and 200 length vectors.
+Unfortunately, I could not put GloVe embeddings in the `data` folder since they occupy more than 100 MB of memory, but it's possible to download them from the website.
+
 The datasets were loaded too and the words were tokenized and padded to a fixed maximum length.
 Also, labels were encoded based on the train data with the following encoder from keras `LabelEncoder()`, and GloVe weights were added based on the words present in the train dataset.
 
