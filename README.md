@@ -9,12 +9,12 @@ The train, validation and test datasets with both sentences and emotion labels (
 In this repository there are the following notebooks:
 
 - [Preprocessing_EDA_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Preprocessing_EDA_LSTM.ipynb) is the notebook that I used to preprocess the data, apply exploratory data analysis, and train with an LSTM layer the data. A 100 GloVe encoding dimension vector developed by [Stanford University](https://nlp.stanford.edu/projects/glove/) was used to encode the words in the datasets.
-- [EDA_LSTM_50_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_50_encodings.ipynb) and [EDA_LSTM_200_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_200_encodings.ipynb) that are like the previous one, but using 50 and 200 dimension encoding vectors.
+- [EDA_LSTM_50_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_50_encodings.ipynb) and [EDA_LSTM_200_encodings.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/EDA_LSTM_200_encodings.ipynb) that are similar to the previous one, but using 50 and 200 dimension encoding vectors respectively.
 - [LSTM_Conv1d.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_Conv1d.ipynb) where I applied an LSTM layer with 100 dimension encoding vectors.
 - [LSTM_LSTM.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_LSTM.ipynb) that is a test with two LSTM layers.
 - [Bidirectional_LSTM_Conv1d.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/LSTM_LSTM.ipynb) where I used a Bidirectional LSTM with a CONV1d layer stacked above it.
 - [Pretrained_BERT.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_BERT.ipynb) in which I applied BERT.
-- [Pretrained_Bert_stopword_lemmatizer.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_Bert_stopword_lemmatizer.ipynb)  in which I applied stopword and lemmatization, followed by BERT. It was the model with the highest accuracy.
+- [Pretrained_Bert_stopword_lemmatizer.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_Bert_stopword_lemmatizer.ipynb)  in which I applied stopword and lemmatization followed by BERT. It was the model with the highest accuracy.
 - [Sentiment_prediction.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) is a class prediction notebook based on a single sentence that the user gives as input.
 
 In all the notebooks used for training, I used on top of the layers a fully connected neural network with 6 neurons as output layer and a variable number of neurons, dropout and hidden layers.
@@ -35,7 +35,7 @@ Instead, for the LSTM and the other tested variations `Tokenizer()` class from `
 
 ### EXPLORATORY DATA ANALYSIS
 
-For this senmtiment analysis problem, 2 types of graphs were plotted.
+For this sentiment analysis problem, 2 types of graphs were plotted.
 
 The first one depicts a wordcloud graph, imported using the library called `wordcloud`.
 
@@ -49,7 +49,7 @@ The first one depicts a wordcloud graph, imported using the library called `word
 
 &nbsp;
     
-It's clear that the words 'feel' and 'feeling' are the most common words for all the three datasets. This is due to the fact that these are the main verbs used to describe all the types of feelings present in the 6 classes.
+It's clear that the words 'feel' and 'feeling' are the most common words for all the three datasets. This is due to the fact that these are the main verbs used to describe the majority of sentiments among the 6 classes.
 
 Below, I put the code used to plot the 3 graphs:
 
@@ -75,11 +75,11 @@ The second type of plot that I coded was a barplot representing the number of se
     
 ![immagine_2022-05-22_003327046](https://user-images.githubusercontent.com/62444785/169671041-6710ae2a-f03b-4120-bd69-be736ca561ec.png)
 
-So, the dataset is unbalanced with 'sadness' and 'joy' labels dominating over the others.
+Thus, the dataset is unbalanced with 'sadness' and 'joy' labels dominating over the others.
    
 ### TRAINING THE MODEL    
     
-In the table below I summed up the model used, the tokenizer, the number of total and trainable parameters and the associated accuracy on validation dataset.
+In the table below I summed up the model used, the tokenizer, the number of total and trainable parameters, and the associated accuracy on validation dataset.
 
 &nbsp;    
     
@@ -120,7 +120,7 @@ Below, I reported the details about this model, the optimizer and the trained ep
           
 &nbsp; 
    
-**<p align="center"> BERT with stopword and lemmatizer - Optimer </p>** 
+**<p align="center"> BERT with stopword and lemmatizer - Optimizer </p>** 
    
 &nbsp;       
    
@@ -150,10 +150,21 @@ Epoch 3/3
 1334/1334 [==============================] - 933s 700ms/step - loss: 0.1113 - accuracy: 0.9482 - val_loss: 0.1550 - val_accuracy: 0.9375    
      
 &nbsp; 
-   
-Thus, the model reached a **93.75 % validation accuracy** and 94.84 % on train dataset. **On test dataset, the model reached an accuracy of 92.95 %**, with a loss of 0.1699.
 
-In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) I applied the trained model in a more compact form to new sentences defined by the user. Running the script, it automatically applies the preprocessing steps and the evaluation, yielding the class prediction of the sentence as output. 
+### PREDICTION
    
+The model reached a **93.75% validation accuracy** and 94.84% accuracy on train dataset. **On test dataset, the model reached an accuracy of 92.95%**, with a loss of 0.1699.
+
+In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) I applied the trained model to new sentences defined by the user in a more compact form. Running the script, it automatically applies the preprocessing steps and the evaluation, yielding the class prediction of the sentence as output. 
+
+Here, there is an example of a defined input sentence along with the prediction given by the model :
+```python
+In [2] : y=input()
+     I am astonished by what you've accomplished     #input text
+Out [3] : 'surprise'     #class prediction
+```   
+   
+
+
     
     
