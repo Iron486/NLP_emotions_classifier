@@ -19,7 +19,7 @@ In this repository there are the following notebooks:
 
 In all the notebooks used for training, I used on top of the layers a fully connected neural network with 6 neurons as output layer and a variable number of neurons, dropout and hidden layers.
 
-I used the Google Colab GPU to train all the models except for the BERT with stopwords and lemmatizer, in which I used my [local GPU](https://github.com/Iron486/Iron486/blob/main/local_GPU.ipynb).
+I used the Google Colab GPU to train all the models except for the BERT with stopwords and lemmatizer and LSTM_Conv1d.ipynb, in which I used my [local GPU](https://github.com/Iron486/Iron486/blob/main/local_GPU.ipynb).
 
 Unfortunately, I could not put GloVe weights in the data folder since they occupy more than 100 MB of memory.
 
