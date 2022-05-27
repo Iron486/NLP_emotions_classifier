@@ -21,6 +21,8 @@ In all the notebooks used for training, I used on top of the layers a fully conn
 
 I used the Google Colab GPU to train all the models except for the BERT with stopwords and lemmatizer, in which I used my [local GPU](https://github.com/Iron486/Iron486/blob/main/local_GPU.ipynb).
 
+Unfortunately, I could not put GloVe weights in the data folder since they occupy more than 100 MB of memory.
+
 ### PREPROCESSING
 
 The embeddings where downloaded from here https://nlp.stanford.edu/projects/glove/ and then they were transformed into a dictionary and saved, so that it would have required less time to load them. The same thing has been done with embeddings of 50 and 200 length vectors.
