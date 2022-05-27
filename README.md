@@ -35,7 +35,7 @@ Instead, for the LSTM and the other tested variations `Tokenizer()` class from `
 
 ### EXPLORATORY DATA ANALYSIS
 
-For this senmtiment analysis problem, 2 types of graphs were plotted.
+For this sentiment analysis problem, 2 types of graphs were plotted.
 
 The first one depicts a wordcloud graph, imported using the library called `wordcloud`.
 
