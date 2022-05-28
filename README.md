@@ -17,7 +17,7 @@ In this repository there are the following notebooks:
 - [Pretrained_Bert_stopword_lemmatizer.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_Bert_stopword_lemmatizer.ipynb)  in which I applied stopword and lemmatization followed by BERT. It was the model with the highest accuracy.
 - [Sentiment_prediction.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) is a class prediction notebook based on a single sentence that the user gives as input.
 
-In all the notebooks used for training, I used on top of the layers a fully connected neural network with 6 neurons as output layer and a variable number of neurons, dropout and hidden layers.
+In all the notebooks used for training, I applied on top of the layers a fully connected neural network with 6 neurons as output layer and a variable number of neurons, dropout and hidden layers.
 
 I used the Google Colab GPU to train all the models except for the BERT with stopwords and lemmatizer and LSTM_Conv1d.ipynb, in which I used my [local GPU](https://github.com/Iron486/Iron486/blob/main/local_GPU.ipynb).
 
