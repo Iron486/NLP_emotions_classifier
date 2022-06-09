@@ -17,18 +17,18 @@ In this repository there are the following notebooks:
 - [Pretrained_Bert_stopword_lemmatizer.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Pretrained_Bert_stopword_lemmatizer.ipynb)  in which I applied stopword and lemmatization followed by BERT. It was the model with the highest accuracy.
 - [Sentiment_prediction.ipynb](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) is a class prediction notebook based on a single sentence that the user gives as input.
 
-In all the notebooks used for training, I used on top of the layers a fully connected neural network with 6 neurons as output layer and a variable number of neurons, dropout and hidden layers.
+In all the notebooks used for training, I applied on top of the layers a fully connected neural network with 6 neurons as output layer and a variable number of neurons, dropout and hidden layers.
 
 I used the Google Colab GPU to train all the models except for the BERT with stopwords and lemmatizer and LSTM_Conv1d.ipynb, in which I used my [local GPU](https://github.com/Iron486/Iron486/blob/main/local_GPU.ipynb).
 
 
 ### PREPROCESSING
 
-The embeddings where downloaded from here https://nlp.stanford.edu/projects/glove/ and then they were transformed into a dictionary and saved, so that it would have required less time to load them. The same thing has been done with embeddings of 50 and 200 length vectors.
+The embeddings were downloaded from here https://nlp.stanford.edu/projects/glove/ and then were transformed into a dictionary and saved, thus requiring less time to be loaded. The same thing has been done with embeddings of 50 and 200 length vectors.
 Unfortunately, I could not put GloVe embeddings in the `data` folder since they occupy more than 100 MB of memory, but it's possible to download them from the website.
 
 The datasets were loaded too and the words were tokenized and padded to a fixed maximum length.
-Also, labels were encoded based on the train data with the following encoder from keras `LabelEncoder()`, and GloVe weights were added based on the words present in the train dataset.
+Furthermore, labels were encoded based on the train data with the following encoder from keras `LabelEncoder()`, and GloVe weights were added based on the words present in the train dataset.
 
 For BERT models, the words were tokenized with the `AutoTokenizer` class from `transformers` library, using the `from_pretrained()` method and using `bert-base-cased` as argument. This is because the input of the model expects 2 features ("input_ids" and "attention_mask") that can be obtained with the mentioned tokenizer. 
 
@@ -52,9 +52,9 @@ The first one depicts a wordcloud graph, imported using the library called `word
 
 &nbsp;
     
-It's clear that the words 'feel' and 'feeling' are the most common words for all the three datasets. This is due to the fact that these are the main verbs used to describe the majority of sentiments among the 6 classes.
+It is clear that the words 'feel' and 'feeling' are the most common words for all the three datasets. This is due to the fact that these are the main verbs used to describe the majority of sentiments among the 6 classes.
 
-Below, I put the code used to plot the 3 graphs:
+Below is the code used to plot the 3 graphs:
 
 
 ```python
@@ -98,7 +98,7 @@ In the table below I summed up the model used, the tokenizer, the number of tota
 |  BidirectionalLSTM-Conv1d     | Tokenizer() |   1,500,257   |  81,757   |     81.60      |       
     
 The largest accuracy was obtained on the BERT with stopword and lemmatization. 
-The model was a pretrained model written by [Hugging Face](https://huggingface.co/bert-base-cased) , and I fetched it with the Tensorflow method `TFBertModel.from_pretrained('bert-base-cased')`.
+The model was a pretrained model written by [Hugging Face](https://huggingface.co/bert-base-cased), and I fetched it with the Tensorflow method `TFBertModel.from_pretrained('bert-base-cased')`.
 
 The input of the BERT were the 2 features obtained with the already mentioned tokenizer ( `AutoTokenizer.from_pretrained('bert-base-cased')` ). 
    
@@ -158,9 +158,9 @@ Epoch 3/3
    
 The model reached a **93.75% validation accuracy** and 94.84% accuracy on train dataset. **On test dataset, the model reached an accuracy of 92.95%**, with a loss of 0.1699.
 
-In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb) I applied the trained model to new sentences defined by the user in a more compact form. Running the script, it automatically applies the preprocessing steps and the evaluation, yielding the class prediction of the sentence as output. 
+In this [notebook](https://github.com/Iron486/NLP_emotions_classifier/blob/main/Sentiment_prediction.ipynb), I applied the trained model to a new sentence defined by the user in a more compact form. When running the script, it automatically applies the preprocessing steps and the evaluation, yielding the class prediction of the sentence as output. 
 
-Here, there is an example of a defined input sentence along with the prediction given by the model :
+Here, there is an example of a defined input sentence along with the prediction given by the model:
 ```python
 In [2] : y=input()
      I am astonished by what you've accomplished     #input text
