@@ -1,6 +1,6 @@
 # NLP_emotions_classifier
 
-The aim of this problem was the correct emotions classification of this dataset: https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp.
+The aim of this problem was the correct emotions prediction of the sentences in this dataset: https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp.
 
 
 
