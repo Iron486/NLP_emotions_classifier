@@ -46,10 +46,10 @@ The first one depicts a wordcloud graph, imported using the library called `word
 
 
 
-<img src="https://user-images.githubusercontent.com/62444785/169670215-b074d597-5abf-4944-bce9-054e5decdf65.png" width="410" height="440"/> 
-<img src="https://user-images.githubusercontent.com/62444785/169670221-2b401cc2-7f53-4353-9eeb-814a13dc923c.png" width="410" height="440"/> 
+<img src="https://user-images.githubusercontent.com/62444785/169670215-b074d597-5abf-4944-bce9-054e5decdf65.png" width="400" height="430"/> 
+<img src="https://user-images.githubusercontent.com/62444785/169670221-2b401cc2-7f53-4353-9eeb-814a13dc923c.png" width="400" height="430"/> 
    
-<p align="center"> <img src="https://user-images.githubusercontent.com/62444785/169670207-6e737fe6-05c8-4919-be15-8f96f75662d9.png" width="410" height=440"/>  </p> 
+<p align="center"> <img src="https://user-images.githubusercontent.com/62444785/169670207-6e737fe6-05c8-4919-be15-8f96f75662d9.png" width="400" height=430"/>  </p> 
 
 &nbsp;
     
